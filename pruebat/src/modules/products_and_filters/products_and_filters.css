@@ -181,3 +181,12 @@
 .products_and_filters .photographs .pages img[alt="ArrowRight"] {
     transform: rotate(180deg);
 }
+
+.products_and_filters .photographs .pages span{
+    margin: 0 0.3em;
+}
+
+.products_and_filters .photographs .pages .disables{
+    pointer-events: none;
+    opacity: 0.25;
+}
