@@ -1,10 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './products_and_filters.css';
 import order from '../../img/order.png';
 import arrow from '../../img/arrow.png';
 import { products } from '../../products.js';
 
 const SelectedProduct = () => {
+
+    const [productsFiltered, setProductsFiltered] = useState([]);
+    const [filters, setFilters] = useState([]);
+
+    useEffect(() => {
+        if (filters.length !== 0) {
+            setProductsFiltered(productsFiltered => []);
+            filters.map((filter)=>{
+                products.map((product)=>{
+                    if (product.category === filter) {
+                        setProductsFiltered(productsFiltered => [...productsFiltered, product]);
+                    }
+                })
+            });
+        } else {
+            setProductsFiltered(products);
+        }
+    }, [filters])
+
+    const addFilter = (filter) => {
+        if (filters.includes(filter)) {
+            setFilters(filters.filter(key => key !== filter));
+            return;
+        } else {
+            setFilters([...filters, filter]);
+            return;
+        }
+    }
 
     return (
         <div className='products_and_filters'>
@@ -27,32 +55,20 @@ const SelectedProduct = () => {
                         <div className="title_filters">Category</div>
                         <div className="checkbox_list">
                             <div className="checkbox_item">
-                                <input type="checkbox" name="people" id="people" />
-                                <label htmlFor="people">People</label>
+                                <input type="checkbox" name="Men's clothing" id="Men's clothing" onChange={() => addFilter("Men's clothing")} />
+                                <label htmlFor="Men's clothing">Men's clothing</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="people" id="people" />
-                                <label htmlFor="people">Premium</label>
+                                <input type="checkbox" name="Women's clothing" id="Women's clothing" onChange={() => addFilter("Women's clothing")}/>
+                                <label htmlFor="Women's clothing">Women's clothing</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="people" id="people" />
-                                <label htmlFor="people">Pets</label>
+                                <input type="checkbox" name="Jewelery" id="Jewelery" onChange={() => addFilter("Jewelery")} />
+                                <label htmlFor="Jewelery">Jewelery</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="people" id="people" />
-                                <label htmlFor="people">Food</label>
-                            </div>
-                            <div className="checkbox_item">
-                                <input type="checkbox" name="people" id="people" />
-                                <label htmlFor="people">Landmarks</label>
-                            </div>
-                            <div className="checkbox_item">
-                                <input type="checkbox" name="people" id="people" />
-                                <label htmlFor="people">Cities</label>
-                            </div>
-                            <div className="checkbox_item">
-                                <input type="checkbox" name="people" id="people" />
-                                <label htmlFor="people">Nature</label>
+                                <input type="checkbox" name="electronics" id="electronics" onChange={() => addFilter("electronics")} />
+                                <label htmlFor="electronics">Electronics</label>
                             </div>
                         </div>
                     </div>
@@ -61,20 +77,20 @@ const SelectedProduct = () => {
                         <div className="title_filters">Price range</div>
                         <div className="checkbox_list">
                             <div className="checkbox_item">
-                                <input type="checkbox" name="people" id="people" />
-                                <label htmlFor="people">Lower than $20</label>
+                                <input type="checkbox" name="lower_than_20" id="lower_than_20" />
+                                <label htmlFor="lower_than_20">Lower than $20</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="people" id="people" />
-                                <label htmlFor="people">$20 - $100</label>
+                                <input type="checkbox" name="20_100" id="20_100" />
+                                <label htmlFor="20_100">$20 - $100</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="people" id="people" />
-                                <label htmlFor="people">$100 - $200</label>
+                                <input type="checkbox" name="100_200" id="100_200" />
+                                <label htmlFor="100_200">$100 - $200</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" name="people" id="people" />
-                                <label htmlFor="people">More than $200</label>
+                                <input type="checkbox" name="more_than_200" id="more_than_200" />
+                                <label htmlFor="more_than_200">More than $200</label>
                             </div>
                         </div>
                     </div>
