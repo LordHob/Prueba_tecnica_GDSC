@@ -5,7 +5,7 @@ import arrow from '../../img/arrow.png';
 import filter from '../../img/filter.png';
 import { products } from '../../products.js';
 
-const SelectedProduct = () => {
+const SelectedProduct = (props) => {
 
     /*HOOKS*/
     const [productsFiltered, setProductsFiltered] = useState([]);
@@ -364,7 +364,7 @@ const SelectedProduct = () => {
                             return (
                                 <div className="photography" key={product?.id}>
                                     <div id={"photo" + product?.id} className="image_and_button" style={{ backgroundImage: `url("${product?.url}")` }}>
-                                        <div className="add_cart_photography">ADD TO CART</div>
+                                        <div className="add_cart_photography" onClick={() => props.addToCart(product)}>ADD TO CART</div>
                                     </div>
                                     <div className="category">{product?.category}</div>
                                     <div className="title">{product?.title}</div>
