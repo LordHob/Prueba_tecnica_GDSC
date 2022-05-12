@@ -11,7 +11,7 @@
     justify-content: space-between;
 }
 
-/*HEADER DE FOTOS Y FILTROS*/
+/*HEADER DE PRODUCTOS Y FILTROS*/
 .products_and_filters .header {
     font-size: 1.15em;
     display: flex;
@@ -20,22 +20,53 @@
     justify-content: space-between;
 }
 
-.products_and_filters .header .products_and_filters_title {
+.products_and_filters .header .photos_and_filters_title {
     font-size: 1.3em;
     font-weight: bold;
 }
 
-.products_and_filters .header .products_and_filters_title .separator {
+.products_and_filters .header .photos_and_filters_title .separator {
     margin: 0 0.4em;
 }
 
-.products_and_filters .header .products_and_filters_title .premium_photos {
+.products_and_filters .header .photos_and_filters_title .premium_photos {
     color: rgb(182, 182, 182);
     font-weight: normal;
 }
 
-.products_and_filters .header img {
+.products_and_filters .header .order {
+    width: 18%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+}
+
+.products_and_filters .header .order span {
+    color: rgb(182, 182, 182);
+}
+
+.products_and_filters .header .order img[alt="Order"] {
+    margin-top: 1.5em;
     width: 0.75em;
+    height: 0.75em;
+}
+
+.products_and_filters .header .order select {
+    all: unset;
+    width: 40%;
+    z-index: 4;
+}
+
+.products_and_filters .header .order img[alt="Select"] {
+    position: absolute;
+    right: 0.2em;
+    margin-top: 1.5em;
+    width: 0.5em;
+    transform: rotate(-90deg);
+    cursor: default;
+    z-index: 3;
 }
 
 /*FILTROS*/
@@ -80,7 +111,7 @@
     cursor: pointer;
 }
 
-.products_and_filters .filters .checkbox_list label{
+.products_and_filters .filters .checkbox_list label {
     cursor: pointer;
 }
 
@@ -144,7 +175,7 @@
     cursor: pointer;
 }
 
-/*DETALLES DE CADA FOTO*/
+/*DETALLES DE CADA PRODUCTO*/
 .products_and_filters .photographs .photography .category {
     color: rgb(84, 84, 84);
     font-weight: bold;
@@ -182,11 +213,16 @@
     transform: rotate(180deg);
 }
 
-.products_and_filters .photographs .pages span{
+.products_and_filters .photographs .pages span {
     margin: 0 0.3em;
+    opacity: 0.25;
 }
 
-.products_and_filters .photographs .pages .disables{
+.products_and_filters .photographs .pages .active {
+    opacity: 1;
+}
+
+.products_and_filters .photographs .pages .disabled {
     pointer-events: none;
     opacity: 0.25;
 }
