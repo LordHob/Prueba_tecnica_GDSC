@@ -55,6 +55,7 @@
 
 .products_and_filters .header .order select {
     all: unset;
+    font-family: 'Archivo', sans-serif;
     width: 40%;
     z-index: 4;
 }
@@ -439,5 +440,8 @@ VERSION MOVIL
         margin: 0 0.25em;
         margin-bottom: 2.5em;
         font-size: 1.2em;
+    }
+    .products_and_filters .photographs .photography .image_and_button {
+        height: 36em;
     }
 } 
