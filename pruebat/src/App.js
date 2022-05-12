@@ -4,7 +4,7 @@ import ProductsAndFilters from './modules/products_and_filters/products_and_filt
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" id ="App">
       <div className="container">
         <Header />
         <ProductsAndFilters />
