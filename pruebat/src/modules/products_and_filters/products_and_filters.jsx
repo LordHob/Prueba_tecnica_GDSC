@@ -7,7 +7,7 @@ import { products } from '../../products.js';
 import CheckboxItem from '../../atoms/checkboxItem/checkboxItem';
 import HeaderProductsAndFilter from '../../molecules/headerProductsAndFilter/headerProductsAndFilter';
 
-const SelectedProduct = (props) => {
+const ProductsAndFilters = (props) => {
 
     /*HOOKS*/
     const [productsFiltered, setProductsFiltered] = useState([]);
@@ -88,13 +88,19 @@ const SelectedProduct = (props) => {
                 }
             });
             if (productsCategories.length > 0 & productsPrizes.length > 0) {
+                let counter = 0;
                 productsCategories.map((productCategory) => {
                     productsPrizes.map((productPrice) => {
                         if (productCategory.id === productPrice.id) {
+                            counter++;
                             setProductsFiltered(productsFiltered => [...productsFiltered, productPrice]);
                         }
                     })
                 })
+                /*SI NO EXISTE NINGUNA COINCIDENCIA, NO MUESTRA NINGUNA FOTO*/
+                if (counter === 0) {
+                    setProductsFiltered(productsFiltered => [{}]);
+                }
             }
             if (productsCategories.length > 0 & productsPrizes.length === 0) {
                 setProductsFiltered(productsCategories);
@@ -157,6 +163,7 @@ const SelectedProduct = (props) => {
 
     /*ORDENA RESULTADOS*/
     const orderProducts = () => {
+        setActivePage(1);
         let ordenedProducts = []
         productsFiltered.map((product) => {
             ordenedProducts.push(product);
@@ -319,8 +326,8 @@ const SelectedProduct = (props) => {
                                 <label htmlFor="Jewelery">Jewelery</label>
                             </div>
                             <div className="checkbox_item">
-                                <input type="checkbox" className='input_checkbox' name="electronics" id="electronics" onChange={() => addFilter("electronics")} />
-                                <label htmlFor="electronics">Electronics</label>
+                                <input type="checkbox" className='input_checkbox' name="electronics" id="electronics" onChange={() => addFilter("Electronics")} />
+                                <label htmlFor="Electronics">Electronics</label>
                             </div>
                         </div>
                     </div>
@@ -387,4 +394,4 @@ const SelectedProduct = (props) => {
     )
 }
 
-export default SelectedProduct;
+export default ProductsAndFilters;
