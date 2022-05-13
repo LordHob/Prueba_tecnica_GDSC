@@ -368,7 +368,7 @@ const ProductsAndFilters = (props) => {
                         {productsPaginated.map((product) => {
                             return (
                                 <div className="photography" key={product?.id}>
-                                    <div id={"photo" + product?.id} className="image_and_button" style={{ backgroundImage: `url("${product?.url}")` }}>
+                                    <div id={"photo" + product?.id} className="image_and_button" style={{ backgroundImage: `url("${product?.image}")` }}>
                                         <div className="add_cart_photography" onClick={() => props.addToCart(product)}>ADD TO CART</div>
                                     </div>
                                     <div className="category">{product?.category}</div>
