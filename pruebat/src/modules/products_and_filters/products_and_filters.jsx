@@ -4,6 +4,7 @@ import order from '../../img/order.png';
 import arrow from '../../img/arrow.png';
 import filter from '../../img/filter.png';
 import { products } from '../../products.js';
+import CheckboxItem from '../../atoms/checkboxItem/checkboxItem';
 
 const SelectedProduct = (props) => {
 
@@ -29,9 +30,11 @@ const SelectedProduct = (props) => {
         }
     })
 
-    /*GUARDA FOTOS CON FILTRO SI EXISTE ALGUN FILTRO APLICADO, Y SI NO GUARDA TODAS
-    GUARDA LAS FOTOS FILTRADAS POR PRECIO EN SU PROPIO ARRAY
-    GUARDA LAS FOTOS FILTRADAS POR CATEGORIAS EN SU PROPIO ARRAY
+    /*
+    GUARDA FOTOS CON FILTRO SI EXISTE ALGUN FILTRO APLICADO, Y SI NO GUARDA TODAS.
+    GUARDA LAS FOTOS FILTRADAS POR PRECIO EN SU PROPIO ARRAY.
+    GUARDA LAS FOTOS FILTRADAS POR CATEGORIAS EN SU PROPIO ARRAY.
+    SI HAY 2 TIPOS DE FILTRO APLICADOS, MUESTRA LAS COINCIDENCIAS DE AMBOS ARRAYS.
     */
 
     useEffect(() => {
@@ -230,6 +233,7 @@ const SelectedProduct = (props) => {
         }
     }
 
+    /*MOVIMIENTO ENTRE PÁGINAS*/
     const nextPage = () => {
         setIndexPagination(indexPagination + productsPerPage);
         setActivePage(activePage + 1);
@@ -240,6 +244,7 @@ const SelectedProduct = (props) => {
         setActivePage(activePage - 1);
     }
 
+    /*CONTROLA VISUALIZACIÓN DE PANTALLA DE FILTROS EN MOVIL*/
     const seeFilters = () => {
         document.getElementById("filters").style.display = "inline-block";
         setShowFiltersMovil(true)
@@ -274,7 +279,7 @@ const SelectedProduct = (props) => {
                     <span>Sort by</span>
                     <select name="categories" id="categories_select" onChange={() => configOrderKey()}>
                         <option value="price" selected>Price</option>
-                        <option value="price">Name</option>
+                        <option value="title">Title</option>
                     </select>
                     <img src={arrow} alt="Select" />
                 </div>
@@ -308,6 +313,14 @@ const SelectedProduct = (props) => {
                             null
                         }
                         <div className="checkbox_list">
+                            {/* {filtersCategory.map((filter) => {
+                                return (
+                                    <CheckboxItem
+                                        filter={filter}
+                                        addFilter={addFilter}
+                                    />
+                                )
+                            })} */}
                             <div className="checkbox_item">
                                 <input type="checkbox" className='input_checkbox' name="Men's clothing" id="Men's clothing" onChange={() => addFilter("Men's clothing")} />
                                 <label htmlFor="Men's clothing">Men's clothing</label>
