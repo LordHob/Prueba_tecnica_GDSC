@@ -9,7 +9,7 @@ const HeaderProductsAndFilter = (props) =>{
     return(
         <div className="header">
             <div className="products_and_filters_title">
-                <span>Photography</span>
+                <span>Products</span>
             </div>
             {document.documentElement.scrollWidth > 768
             ?

@@ -5,6 +5,7 @@ import arrow from '../../img/arrow.png';
 import filter from '../../img/filter.png';
 import { products } from '../../products.js';
 import CheckboxItem from '../../atoms/checkboxItem/checkboxItem';
+import HeaderProductsAndFilter from '../../molecules/headerProductsAndFilter/headerProductsAndFilter';
 
 const SelectedProduct = (props) => {
 
@@ -268,27 +269,11 @@ const SelectedProduct = (props) => {
 
     return (
         <div className='products_and_filters'>
-            <div className="header">
-                <div className="products_and_filters_title">
-                    <span>Products</span>
-                </div>
-                {document.documentElement.scrollWidth > 768
-                    ?
-                <div className="order" onClick={() => orderProducts()}>
-                    <img src={order} alt="Order" />
-                    <span>Sort by</span>
-                    <select name="categories" id="categories_select" onChange={() => configOrderKey()}>
-                        <option value="price" selected>Price</option>
-                        <option value="title">Title</option>
-                    </select>
-                    <img src={arrow} alt="Select" />
-                </div>
-                :
-                <div className="button_filters">
-                    <img src={filter} alt="Filter" onClick={() => seeFilters()} />
-                </div>
-                }
-            </div>
+            <HeaderProductsAndFilter
+                orderPhotos={orderProducts}
+                configOrderKey={configOrderKey}
+                seeFilters={seeFilters}
+            />
             <div className="container_filters_photographs">
                 <div className="filters" id="filters">
                     {showFiltersMovil
